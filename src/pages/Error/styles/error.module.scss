@@ -1,0 +1,18 @@
+.error-page {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.error-page-alert {
+    margin-bottom: 0px;
+
+    p {
+        &:last-child {
+            margin-bottom: 0px;
+        }
+    }
+}
