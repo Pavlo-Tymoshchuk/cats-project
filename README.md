@@ -1,0 +1,1 @@
+https://github.com/GlobalWebIndex/platform2.0-react-challenge
