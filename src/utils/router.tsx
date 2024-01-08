@@ -12,3 +12,19 @@ export const router = createBrowserRouter([
         children: [{ index: true, element: <RandomCats /> }],
     },
 ])
+
+interface RouterList {
+    name: string
+    url: string
+}
+
+export const routerList: RouterList[] = [
+    {
+        name: 'Random Cats',
+        url: '/',
+    },
+    {
+        name: 'My Favorite',
+        url: '/favorite',
+    },
+]
