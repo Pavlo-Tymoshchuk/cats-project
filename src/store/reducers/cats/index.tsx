@@ -1,23 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { fetchRandomCats } from './asyncThunk'
 
-interface Cat {
-    id: string
-    url: string
-    width: boolean
-    height: boolean
-}
+import { Cat } from '../../../dto/catsTypes'
 
 interface CatState {
     catsList: Cat[]
+    page: number
     loading: boolean
     globalError: string | null
 }
 
 const initialState: CatState = {
     catsList: [],
+    page: 0,
     loading: false,
-    globalError: null
+    globalError: null,
 }
 
 const catsSlice = createSlice({
@@ -26,6 +23,9 @@ const catsSlice = createSlice({
     reducers: {
         setCatsList(state, action) {
             state.catsList = [...state.catsList, ...action.payload]
+        },
+        setCatsPage(state) {
+            state.page += 1
         },
     },
     extraReducers: (builder) => {
@@ -43,10 +43,9 @@ const catsSlice = createSlice({
 
                 if (typeof action.payload === 'string') {
                     state.globalError = action.payload
-                }else {
+                } else {
                     state.globalError = null
                 }
-
             })
     },
 })
