@@ -4,7 +4,7 @@ export interface Cat {
     url: string
     width: boolean
     height: boolean
-    breeds: Breed[]
+    breeds?: Breed[]
     categories?: Category[]
 }
 
@@ -13,7 +13,7 @@ interface Category {
     name: string
 }
 
-interface Breed {
+export interface Breed {
     weight: Weight
     id: string
     name: string

@@ -1,9 +1,18 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 
+body {
+    padding: 16px 0px;
+}
+
 .container {
     width: 100%;
     max-width: 1024px;
     padding: 0 16px;
     margin: 0 auto;
+}
 
+ul:has([class]) {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
 }

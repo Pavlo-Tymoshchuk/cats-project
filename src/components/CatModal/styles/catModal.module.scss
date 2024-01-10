@@ -1,0 +1,14 @@
+.image-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+    img {
+        max-height: 300px;
+    }
+}
+
+.breeds-list {
+    margin-top: 20px;
+}

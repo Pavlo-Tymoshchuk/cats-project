@@ -1,0 +1,11 @@
+.random-cats-list {
+    display: grid;
+    grid-template-columns: repeat(3, 3fr);
+    gap: 24px 16px;
+}
+
+.random-cats-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}

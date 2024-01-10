@@ -1,17 +1,30 @@
 import { FC } from 'react'
+import { useSearchParams } from 'react-router-dom'
 
-import { Button, Card } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
+import Button from '../Button'
 
-interface CatCardProps {}
+interface CatCardProps {
+    imageUrl: string
+    name: string
+    catId: string
+}
 
-const CatCard: FC<CatCardProps> = () => {
+const CatCard: FC<CatCardProps> = ({ imageUrl, name, catId }) => {
+    const [, setSearchParams] = useSearchParams()
+
+    const setCatParams = () => {
+        setSearchParams({
+            activeCat: catId,
+        })
+    }
+
     return (
-        <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
+        <Card>
+            <Card.Img variant="top" src={imageUrl} onClick={setCatParams} role="button" alt={name} />
             <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                <Card.Text>Some quick example text to build on the card title and make up the bulk of the card's content.</Card.Text>
-                <Button variant="primary">Go somewhere</Button>
+                <Card.Title>{name}</Card.Title>
+                <Button type='info' onClick={setCatParams}>Read more</Button>
             </Card.Body>
         </Card>
     )

@@ -1,17 +1,13 @@
 import axios from 'axios'
 import { api } from '../../../../utils/api'
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { RootState } from '../../../../store'
+import { CATS_LIMIT } from '../index'
 
-export const fetchRandomCats = createAsyncThunk('girls/fetchRandomCats', async function (_, { getState, rejectWithValue }) {
-    const state = getState() as RootState
-
-    const pageParam = state.cats.page
-
+export const fetchRandomCats = createAsyncThunk('girls/fetchRandomCats', async function (pageParam: number, { rejectWithValue }) {
     try {
         const response = await api.get('https://api.thecatapi.com/v1/images/search', {
             params: {
-                limit: 10,
+                limit: CATS_LIMIT,
                 page: pageParam,
             },
         })

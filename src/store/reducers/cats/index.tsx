@@ -3,11 +3,14 @@ import { fetchRandomCats } from './asyncThunk'
 
 import { Cat } from '../../../dto/catsTypes'
 
+export const CATS_LIMIT = 9
+
 interface CatState {
     catsList: Cat[]
     page: number
     loading: boolean
     globalError: string | null
+    canLoadMore: boolean
 }
 
 const initialState: CatState = {
@@ -15,6 +18,7 @@ const initialState: CatState = {
     page: 0,
     loading: false,
     globalError: null,
+    canLoadMore: true
 }
 
 const catsSlice = createSlice({
@@ -37,6 +41,10 @@ const catsSlice = createSlice({
             .addCase(fetchRandomCats.fulfilled, (state, action) => {
                 state.loading = false
                 state.catsList = [...state.catsList, ...action.payload]
+
+                if(action.payload.length < CATS_LIMIT) {
+                    state.canLoadMore = false
+                }
             })
             .addCase(fetchRandomCats.rejected, (state, action) => {
                 state.loading = false
@@ -50,6 +58,6 @@ const catsSlice = createSlice({
     },
 })
 
-export const { setCatsList } = catsSlice.actions
+export const { setCatsList, setCatsPage } = catsSlice.actions
 
 export default catsSlice.reducer
