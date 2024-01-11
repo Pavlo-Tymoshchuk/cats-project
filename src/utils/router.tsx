@@ -3,7 +3,8 @@ import App from '../App.tsx'
 
 import Error from '../pages/Error/'
 import RandomCats from '../pages/RandomCats'
-import Breads from '../pages/Breads/index.tsx'
+import Breads from '../pages/Breads/'
+import Favorites from '../pages/Favorites'
 
 export const router = createBrowserRouter([
     {
@@ -15,6 +16,10 @@ export const router = createBrowserRouter([
             {
                 path: '/breads',
                 element: <Breads />,
+            },
+            {
+                path: '/favorites',
+                element: <Favorites />,
             }
         ],
     },
@@ -36,6 +41,6 @@ export const routerList: RouterList[] = [
     },
     {
         name: 'My Favorite',
-        url: '/favorite',
+        url: '/favorites',
     },
 ]
