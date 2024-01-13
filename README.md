@@ -7,6 +7,12 @@ https://github.com/GlobalWebIndex/platform2.0-react-challenge
 
 ## Getting Started
 
+Init node modules:
+
+```bash
+npm i
+```
+
 Start the development server:
 
 ```bash
