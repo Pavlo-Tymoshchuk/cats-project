@@ -6,7 +6,7 @@ import { Alert } from 'react-bootstrap'
 import Button from '../../components/Button'
 import CatModal from '../../components/CatModal'
 
-import { useGetRandomCats } from '../../store/reducers/cats/hooks/useGetRandomCats'
+import { useGetRandomCats } from '../../hooks/useGetRandomCats'
 
 import { createCatTitle } from '../../utils/helpers'
 
