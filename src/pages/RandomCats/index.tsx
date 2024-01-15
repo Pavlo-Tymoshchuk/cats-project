@@ -1,36 +1,17 @@
-import { FC, useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '../../store'
+import { FC } from 'react'
 import classes from './styles/randomCats.module.scss'
 
-import { fetchRandomCats } from '../../store/reducers/cats/asyncThunk'
 import CatCard from '../../components/CatCard'
 import { Alert } from 'react-bootstrap'
 import Button from '../../components/Button'
 import CatModal from '../../components/CatModal'
 
+import { useGetRandomCats } from '../../hooks/useGetRandomCats'
+
 import { createCatTitle } from '../../utils/helpers'
 
-interface RandomCatsProps {}
-
-const RandomCats: FC<RandomCatsProps> = () => {
-    const canLoadMore = useAppSelector((state) => state.cats.canLoadMore)
-    const page = useAppSelector((state) => state.cats.page)
-    const loading = useAppSelector((state) => state.cats.loading)
-    const catsList = useAppSelector((state) => state.cats.catsList)
-    const globalError = useAppSelector((state) => state.cats.globalError)
-    const dispatch = useAppDispatch()
-
-    const loadMoreCats = () => {
-        const newPage = page + 1
-        dispatch(fetchRandomCats(newPage))
-    }
-
-    useEffect(() => {
-        // Щоб при переході між сторінками не бралися знов дані
-        if (!catsList.length) {
-            dispatch(fetchRandomCats(page))
-        }
-    }, [])
+const RandomCats: FC = () => {
+    const { canLoadMore, globalError, loading, catsList, loadMoreCats } = useGetRandomCats()
 
     if (loading && !catsList?.length) {
         return 'loading...'
