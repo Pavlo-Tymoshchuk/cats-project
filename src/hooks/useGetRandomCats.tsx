@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '../store/index'
+import { useAppDispatch, useAppSelector } from '../store'
 import { getRandomCats } from '../store/reducers/cats/asyncThunk'
-import { setCatsPage } from '../store/reducers/cats/index'
+import { setCatsPage } from '../store/reducers/cats'
 
 export const useGetRandomCats = () => {
     const canLoadMore = useAppSelector((state) => state.cats.canLoadMore)
