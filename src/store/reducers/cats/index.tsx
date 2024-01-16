@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { fetchRandomCats } from './asyncThunk'
+import { getRandomCats } from './asyncThunk'
 
 import { Cat } from '../../../dto/catsTypes'
 
@@ -34,11 +34,11 @@ const catsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(fetchRandomCats.pending, (state) => {
+            .addCase(getRandomCats.pending, (state) => {
                 state.loading = true
                 state.globalError = null
             })
-            .addCase(fetchRandomCats.fulfilled, (state, action) => {
+            .addCase(getRandomCats.fulfilled, (state, action) => {
                 state.loading = false
                 state.catsList = [...state.catsList, ...action.payload]
 
@@ -46,7 +46,7 @@ const catsSlice = createSlice({
                     state.canLoadMore = false
                 }
             })
-            .addCase(fetchRandomCats.rejected, (state, action) => {
+            .addCase(getRandomCats.rejected, (state, action) => {
                 state.loading = false
 
                 if (typeof action.payload === 'string') {
