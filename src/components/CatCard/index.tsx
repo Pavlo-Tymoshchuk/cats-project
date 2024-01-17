@@ -4,6 +4,8 @@ import { useSearchParams } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
 import Button from '../Button'
 
+import { NAME_SERCH_CAT } from '../../utils/constants'
+
 interface CatCardProps {
     imageUrl: string
     name: string
@@ -15,7 +17,7 @@ const CatCard: FC<CatCardProps> = ({ imageUrl, name, catId }) => {
 
     const setCatParams = () => {
         setSearchParams({
-            activeCat: catId,
+            [NAME_SERCH_CAT]: catId,
         })
     }
 
