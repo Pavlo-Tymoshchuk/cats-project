@@ -8,19 +8,18 @@ import classes from './styles/catModal.module.scss'
 import { Modal, Image } from 'react-bootstrap'
 import { Cat as CatType } from '../../dto/catsTypes'
 import Button from '../Button'
-import FavoriteBtn from '../FavoriteBtn'
 
 import { createCatTitle } from '../../utils/helpers'
+import { useFavoriteManipulations } from '../../hooks/useFavoriteManipulations'
 
-interface CatModalProps {}
-
-const CatModal: FC<CatModalProps> = () => {
+const CatModal: FC = () => {
     const [activeCat, setActiveCat] = useState<CatType | null>(null)
     const [error, setError] = useState<null | string>(null)
     const [loading, setLoading] = useState<boolean>(false)
     const [searchParams, setSearchParams] = useSearchParams()
     const navigate = useNavigate()
     const activeCatId = searchParams.get('activeCat')
+    const { loadingFavorite, favoriteActionMethod, favoriteImageStatus } = useFavoriteManipulations({catId: activeCatId})
 
     const clearParams = () => {
         searchParams.delete('activeCat')
@@ -99,7 +98,11 @@ const CatModal: FC<CatModalProps> = () => {
             {activeCat?.url ? (
                 <div className={classes['image-wrapper']}>
                     <Image src={activeCat?.url} thumbnail alt={createModalTitle()} />
-                    <FavoriteBtn catId={activeCatId} />
+                    <div className={classes['favorite-btn']}>
+                        <Button loading={loadingFavorite} onClick={favoriteActionMethod}>
+                            <img src={favoriteImageStatus} alt="heart-icon" />
+                        </Button>
+                    </div>
                 </div>
             ) : null}
             <Modal.Body>{setDescription()}</Modal.Body>
