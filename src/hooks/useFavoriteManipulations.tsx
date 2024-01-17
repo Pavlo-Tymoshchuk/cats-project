@@ -3,11 +3,11 @@ import { api } from '../utils/api'
 
 const USET_NAME = import.meta.env.VITE_USET_NAME
 
-interface FavoriteBtnProps {
+interface FavoriteManipulations {
     catId: string | null
 }
 
-export const useFavoriteManipulations = ({ catId }: FavoriteBtnProps) => {
+export const useFavoriteManipulations = ({ catId }: FavoriteManipulations) => {
     const [favoriteId, setFavoriteId] = useState<number | null>(null)
     const [loading, setLoading] = useState<boolean>(false)
 
