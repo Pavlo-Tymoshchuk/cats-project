@@ -1,16 +1,13 @@
-import { useState, useEffect } from 'react'
-import { api } from '../../utils/api'
-import Button from '../Button'
-
-import classes from './styles/favoriteBtn.module.scss'
+import { useEffect, useState } from 'react'
+import { api } from '../utils/api'
 
 const USET_NAME = import.meta.env.VITE_USET_NAME
 
-interface FavoriteBtnProps {
+interface FavoriteManipulations {
     catId: string | null
 }
 
-function FavoriteBtn({ catId }: FavoriteBtnProps) {
+export const useFavoriteManipulations = ({ catId }: FavoriteManipulations) => {
     const [favoriteId, setFavoriteId] = useState<number | null>(null)
     const [loading, setLoading] = useState<boolean>(false)
 
@@ -57,13 +54,10 @@ function FavoriteBtn({ catId }: FavoriteBtnProps) {
         }
     }, [catId])
 
-    return (
-        <div className={classes['favorite-btn']}>
-            <Button loading={loading} onClick={favoriteId ? deleteLike : createLike}>
-                <img src={favoriteId ? '/full-heart.svg' : '/emty-heart.svg'} alt="heart-icon" />
-            </Button>
-        </div>
-    )
-}
 
-export default FavoriteBtn
+    return {
+        loadingFavorite: loading,
+        favoriteActionMethod: favoriteId ? deleteLike : createLike,
+        favoriteImageStatus: favoriteId ? '/full-heart.svg' : '/emty-heart.svg'
+    }
+}
