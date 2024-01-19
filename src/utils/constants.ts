@@ -1,0 +1,1 @@
+export const NAME_SERCH_CAT = 'activeCat'
