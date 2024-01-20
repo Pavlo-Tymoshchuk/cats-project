@@ -1,7 +1,6 @@
 import { FC } from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 
-
 import classes from './styles/catModal.module.scss'
 
 import { Modal, Image } from 'react-bootstrap'
@@ -16,9 +15,8 @@ const CatModal: FC = () => {
     const [searchParams] = useSearchParams()
     const navigate = useNavigate()
     const activeCatId = searchParams.get(NAME_SERCH_CAT)
-    const { activeCatData, activeCatDataError, activeCatDataLoading, clearParams } = useGetSingleCatData({catId: activeCatId})
-    const { loadingFavorite, favoriteActionMethod, favoriteImageStatus } = useFavoriteManipulations({catId: activeCatId})
-
+    const { activeCatData, activeCatDataError, activeCatDataLoading, clearParams } = useGetSingleCatData({ catId: activeCatId })
+    const { loadingFavorite, favoriteActionMethod, favoriteImageStatus } = useFavoriteManipulations({ catId: activeCatId })
 
     const createModalTitle = () => {
         if (activeCatDataError) {
@@ -43,7 +41,7 @@ const CatModal: FC = () => {
             return (
                 <ol className={classes['breeds-list']}>
                     {activeCatData.breeds.map((item) => (
-                        <li className={classes['breeds-item']}>
+                        <li className={classes['breeds-item']} key={item.id}>
                             <p>{item.description}</p>
                             <Button onClick={goToBreedsPage(item.id)}>About {item.name}</Button>
                         </li>
@@ -54,7 +52,6 @@ const CatModal: FC = () => {
 
         return null
     }
-
 
     return (
         <Modal show={!!activeCatId} onHide={clearParams} animation={false}>

@@ -28,8 +28,8 @@ const BreedsList: FC = () => {
     return (
         <ul className={classes['breeds-list']}>
             {breedsList.map((item) => (
-                <li className={classes['breeds-item']}>
-                    <Button type="info" key={item.id} onClick={() => setBreedParams(item.id)}>
+                <li className={classes['breeds-item']} key={item.id}>
+                    <Button type="info" onClick={() => setBreedParams(item.id)}>
                         {item.name}
                     </Button>
                 </li>
