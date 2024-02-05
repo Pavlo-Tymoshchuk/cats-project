@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import cats from './reducers/cats'
+import breeds from './reducers/breeds'
 
 import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux'
 
 export const store = configureStore({
     reducer: {
         cats,
+        breeds
     },
 })
 
