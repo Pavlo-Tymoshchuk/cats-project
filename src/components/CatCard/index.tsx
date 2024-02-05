@@ -1,3 +1,4 @@
+import React from 'react'
 import { FC } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
@@ -26,7 +27,9 @@ const CatCard: FC<CatCardProps> = ({ imageUrl, name, catId }) => {
             <Card.Img variant="top" src={imageUrl} onClick={setCatParams} role="button" alt={name} />
             <Card.Body>
                 <Card.Title>{name}</Card.Title>
-                <Button type='info' onClick={setCatParams}>Read more</Button>
+                <Button type="info" onClick={setCatParams}>
+                    Read more
+                </Button>
             </Card.Body>
         </Card>
     )

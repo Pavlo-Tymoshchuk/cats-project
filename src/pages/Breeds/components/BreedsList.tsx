@@ -1,3 +1,4 @@
+import React from 'react'
 import { FC } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import classes from '../styles/breedsList.module.scss'

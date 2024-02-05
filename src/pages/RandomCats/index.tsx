@@ -1,13 +1,10 @@
+import React from 'react'
 import { FC } from 'react'
 
 import CatsList from './components/CatsList'
 
 const RandomCats: FC = () => {
-    return (
-        <>
-            <CatsList />
-        </>
-    )
+    return <CatsList />
 }
 
 export default RandomCats

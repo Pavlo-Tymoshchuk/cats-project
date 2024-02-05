@@ -8,10 +8,10 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "ts": "tsc --noEmit"
   },
   "dependencies": {
-    "-": "^0.0.1",
     "@reduxjs/toolkit": "^2.0.1",
     "axios": "^1.6.5",
     "bootstrap": "^5.3.2",
@@ -24,6 +24,7 @@
     "sass": "^1.69.7"
   },
   "devDependencies": {
+    "@types/node": "^20.11.16",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
